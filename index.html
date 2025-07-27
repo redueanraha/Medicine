@@ -1,50 +1,65 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>বাংলাদেশি ঔষধ অনলাইন দোকান</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>বাংলাদেশি ঔষধ</title>
+  <style>
+    body { font-family: sans-serif; padding: 10px; background: #f9f9f9; }
+    .medicine { border: 1px solid #ccc; padding: 10px; margin: 10px 0; background: white; }
+    button { background: green; color: white; padding: 8px 12px; border: none; cursor: pointer; }
+    input { padding: 10px; width: 100%; margin: 10px 0; }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>বাংলাদেশি ঔষধ অনলাইন দোকান</h1>
-  </header>
-<input type="text" id="searchInput" placeholder="ঔষধের নাম লিখুন..." onkeyup="searchMedicine()" style="margin: 20px; padding: 10px; width: 90%; font-size: 16px;">
 
-  <section class="products">
-    <div class="product-card">
-      <img src="https://via.placeholder.com/150" alt="Napa 500mg">
-      <h2>Napa 500mg</h2>
-      <p>৳৫৫.০০</p>
-      <button onclick="orderNow('Napa 500mg', 55)">অর্ডার করুন</button>
-    </div>
-    <div class="product-card">
-      <img src="https://via.placeholder.com/150" alt="Seclo 20mg">
-      <h2>Seclo 20mg</h2>
-      <p>৳৮৮.০০</p>
-      <button onclick="orderNow('Seclo 20mg', 88)">অর্ডার করুন</button>
-    </div>
-    <div class="product-card">
-      <img src="https://via.placeholder.com/150" alt="Ace 500mg">
-      <h2>Ace 500mg</h2>
-      <p>৳৬৩.০০</p>
-      <button onclick="orderNow('Ace 500mg', 63)">অর্ডার করুন</button>
-    </div>
-  </section>
+  <h2>বাংলাদেশি ঔষধের দোকান</h2>
 
-  <script function searchMedicine() {
-  const input = document.getElementById('searchInput').value.toLowerCase();
-  const medicines = document.querySelectorAll('.medicine');
+  <!-- 🔍 সার্চ বক্স -->
+  <input type="text" id="searchInput" placeholder="ঔষধের নাম লিখুন..." onkeyup="searchMedicine()">
 
-  medicines.forEach(med => {
-    const name = med.querySelector('h3').textContent.toLowerCase();
-    if (name.includes(input)) {
-      med.style.display = "block";
-    } else {
-      med.style.display = "none";
+  <!-- 🩺 ঔষধ লিস্ট -->
+  <div id="medicineList">
+
+    <div class="medicine">
+      <h3>Napa 500mg</h3>
+      <p>৳৫.০০</p>
+      <button onclick="orderMedicine('Napa 500mg', '৫.০০')">অর্ডার করুন</button>
+    </div>
+
+    <div class="medicine">
+      <h3>Seclo 20mg</h3>
+      <p>৳৮.০০</p>
+      <button onclick="orderMedicine('Seclo 20mg', '৮.০০')">অর্ডার করুন</button>
+    </div>
+
+    <div class="medicine">
+      <h3>Ace 500mg</h3>
+      <p>৳৬.০০</p>
+      <button onclick="orderMedicine('Ace 500mg', '৬.০০')">অর্ডার করুন</button>
+    </div>
+
+  </div>
+
+  <script>
+    // ✅ WhatsApp অর্ডার ফাংশন
+    function orderMedicine(name, price) {
+      const message = `আমি ${name} (${price} টাকা) অর্ডার করতে চাই।\nনাম: \nমোবাইল: \nঠিকানা: `;
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappURL = `https://wa.me/message/WU4AE2MNEWETF1?text=${encodedMessage}`;
+      window.open(whatsappURL, '_blank');
     }
-  });
-}="script.js"></script>
+
+    // 🔍 সার্চ ফাংশন
+    function searchMedicine() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const items = document.querySelectorAll('.medicine');
+      items.forEach(item => {
+        const title = item.querySelector('h3').textContent.toLowerCase();
+        item.style.display = title.includes(input) ? 'block' : 'none';
+      });
+    }
+  </script>
+
 </body>
 </html>
