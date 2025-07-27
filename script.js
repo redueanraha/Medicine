@@ -1,17 +1,7 @@
-let selectedMedicine = "";
-
-function OrderNow(medicine) {
-  selectedMedicine = medicine;
-  document.getElementById("orderForm").classList.remove("hidden");
-  document.getElementById("medicine").value = medicine;
+function orderNow(productName, price) {
+  const phoneNumber = "8801307249542"; // ← এখানে তোমার WhatsApp নাম্বার বসাও (৮৮০ দিয়ে শুরু)
+  const message = `আমি "${productName}" নিতে চাই, দাম ৳${price}। দয়া করে ডেলিভারি করুন।`;
+  const encodedMessage = encodeURIComponent(message);
+  const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+  window.open(url, "_blank");
 }
-
-function submitForm(event) {
-  event.preventDefault();
-
-  const name = document.getElementById("name").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const address = document.getElementById("address").value.trim();
-  const medicine = document.getElementById("medicine").value;
-
-  const message = `নাম: ${name}%0Aফোন: ${phon
