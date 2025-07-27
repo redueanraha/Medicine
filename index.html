@@ -2,9 +2,9 @@
 <html lang="bn">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>বাংলাদেশি ঔষধ অনলাইন দোকান</title>
-  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
@@ -15,32 +15,21 @@
     <div class="product-card">
       <img src="https://via.placeholder.com/150" alt="Napa 500mg">
       <h2>Napa 500mg</h2>
-      <p>৳৫.০০</p>
-      <button onclick="orderNow('Napa 500mg')">অর্ডার করুন</button>
+      <p>৳৫৫.০০</p>
+      <button onclick="orderNow('Napa 500mg', 55)">অর্ডার করুন</button>
     </div>
     <div class="product-card">
       <img src="https://via.placeholder.com/150" alt="Seclo 20mg">
       <h2>Seclo 20mg</h2>
-      <p>৳৮.০০</p>
-      <button onclick="orderNow('Seclo 20mg')">অর্ডার করুন</button>
+      <p>৳৮৮.০০</p>
+      <button onclick="orderNow('Seclo 20mg', 88)">অর্ডার করুন</button>
     </div>
     <div class="product-card">
       <img src="https://via.placeholder.com/150" alt="Ace 500mg">
       <h2>Ace 500mg</h2>
-      <p>৳৬.০০</p>
-      <button onclick="orderNow('Ace 500mg')">অর্ডার করুন</button>
+      <p>৳৬৩.০০</p>
+      <button onclick="orderNow('Ace 500mg', 63)">অর্ডার করুন</button>
     </div>
-  </section>
-
-  <section id="orderForm" class="order-form hidden">
-    <h2>অর্ডার ফর্ম</h2>
-    <form onsubmit="sendOrder(event)">
-      <input type="text" id="name" placeholder="আপনার নাম" required />
-      <input type="tel" id="phone" placeholder="মোবাইল নম্বর" required />
-      <textarea id="address" placeholder="আপনার ঠিকানা" required></textarea>
-      <input type="hidden" id="product" />
-      <button type="submit">WhatsApp-এ অর্ডার পাঠান</button>
-    </form>
   </section>
 
   <script src="script.js"></script>
