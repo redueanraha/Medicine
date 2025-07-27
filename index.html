@@ -33,6 +33,18 @@
     </div>
   </section>
 
-  <script src="script.js"></script>
+  <script function searchMedicine() {
+  const input = document.getElementById('searchInput').value.toLowerCase();
+  const medicines = document.querySelectorAll('.medicine');
+
+  medicines.forEach(med => {
+    const name = med.querySelector('h3').textContent.toLowerCase();
+    if (name.includes(input)) {
+      med.style.display = "block";
+    } else {
+      med.style.display = "none";
+    }
+  });
+}="script.js"></script>
 </body>
 </html>
